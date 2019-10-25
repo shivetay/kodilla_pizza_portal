@@ -2,13 +2,13 @@
   "name": "pizzeria_portal",
   "version": "0.1.0",
   "private": true,
-  
   "scripts": {
     "start": "run-p start:* ",
     "start-silent": "run-p start > /dev/null",
     "start:react": "react-scripts start",
     "start-and-test": "run-p start-silent test ",
     "build": "react-scripts build",
+    "lint": "esw --watch --clear",
     "test": "react-scripts test --noStackTrace",
     "test-all": "react-scripts test --watchAll=false --noStackTrace",
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
@@ -25,7 +25,6 @@
       "eslint"
     ]
   },
- 
   "browserslist": {
     "production": [
       ">0.2%",
@@ -39,11 +38,11 @@
     ]
   },
   "devDependencies": {
+    "eslint-watch": "^6.0.1",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
     "redux-devtools-extension": "^2.13.8"
   },
-
   "dependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
