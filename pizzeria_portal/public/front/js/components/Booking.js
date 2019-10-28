@@ -30,7 +30,7 @@ class Booking {
     const params = {
       booking: [startDateParam, endDateParam],
       eventsCurrent: [settings.db.notRepeatParam, startDateParam, endDateParam],
-      eventsRepeat: [settings.db.repeatParam, endDateParam]
+      eventsRepeat: [settings.db.repeatParam, endDateParam],
     };
     // console.log('parametry', params);
 
@@ -53,14 +53,14 @@ class Booking {
         '/' +
         settings.db.event +
         '?' +
-        params.eventsRepeat.join('&')
+        params.eventsRepeat.join('&'),
     };
     // console.log('urls', urls);
 
     Promise.all([
       fetch(urls.booking),
       fetch(urls.eventsCurrent),
-      fetch(urls.eventsRepeat)
+      fetch(urls.eventsRepeat),
     ])
       .then(function(allResponse) {
         const bookingsResponse = allResponse[0];
@@ -69,7 +69,7 @@ class Booking {
         return Promise.all([
           bookingsResponse.json(),
           eventsCurrentResponse.json(),
-          eventsRepeatResponse.json()
+          eventsRepeatResponse.json(),
         ]);
       })
       .then(function([bookings, eventsCurrent, eventsRepeat]) {
@@ -139,7 +139,7 @@ class Booking {
             date,
             hour,
             duration,
-            tableId: table
+            tableId: table,
           });
         })
         // [true, false]
@@ -198,7 +198,7 @@ class Booking {
         thisBooking.isBooked({
           date: thisBooking.date,
           hour: thisBooking.hour,
-          tableId
+          tableId,
         })
       ) {
         table.classList.add(classNames.booking.tableBooked);
@@ -290,7 +290,7 @@ class Booking {
       hour: thisBooking.hourPicker.value,
       duration: thisBooking.hoursAmount.value,
       people: thisBooking.peopleAmount.value,
-      starters: []
+      starters: [],
     };
 
     for (let starter of thisBooking.dom.starters) {
@@ -311,9 +311,9 @@ class Booking {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     };
     fetch(url, options)
       .then(function(response) {

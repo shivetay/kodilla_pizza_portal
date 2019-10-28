@@ -4,18 +4,18 @@ import BaseWidget from './BaseWidgets.js';
 
 /* Amount widget class */
 class AmountWidget extends BaseWidget{
-    constructor (element){
-      /*refers to baseWidget */
-      super(element, settings.amountWidget.defaultValue);
+  constructor (element){
+    /*refers to baseWidget */
+    super(element, settings.amountWidget.defaultValue);
 
-        const thisWidget = this;
+    const thisWidget = this;
         
-        thisWidget.getElements(element);
+    thisWidget.getElements(element);
         
-        thisWidget.initActions();
+    thisWidget.initActions();
 
-    }
-    getElements(/*element*/){
+  }
+  getElements(/*element*/){
     const thisWidget = this;
   
     // thisWidget.element = element; this is done by bease widget
