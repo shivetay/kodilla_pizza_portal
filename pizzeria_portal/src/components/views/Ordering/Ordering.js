@@ -4,15 +4,19 @@ import {Link} from 'react-router-dom';
 
 import styles from './Ordering.scss';
 
-const Ordering = (id) => (
-  <div className={styles.component}>
-    <h2>Ordering viev</h2>
-    <Link to={`/ordering/order/${id}`}>Ordering</Link>
-  </div>
-);
+const Ordering = (props) => {
+  const {location} = props;
+  console.log(props);
+  return(
+    <div className={styles.component}>
+      <h2>Ordering viev</h2>
+      <Link to={`/ordering/order/${location.key}`}>Order</Link>
+    </div>
+  );
+};
 
 Ordering.propTypes = {
-  id: PropTypes.string,
+  location: PropTypes.string,
 };
 
 export default Ordering;

@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 
 import styles from './Booking.scss';
 
-const Booking = (props) => (
-  <div className={styles.component}>
-    <h2>Booking view</h2>
-    { props.id }
-  </div>
-);
+const Booking = (props) => {
+  const {location} = props;
+  return(
+    <div className={styles.component}>
+      <h2>Booking view</h2>
+      <p>{ location.pathname }</p>
+    </div>
+  );
+};
 
 Booking.propTypes = {
-  id: PropTypes.string,
+  location: PropTypes.string,
 };
 
 export default Booking;

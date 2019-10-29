@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 
 import styles from './Order.scss';
 
-const Order = (props) => (
-  <div className={styles.component}>
-    <h2>Order viev</h2>
-    {props.id}
-  </div>
-);
+const Order = (props) => {
+  
+  const {location} = props;
+  return(
+    <div className={styles.component}>
+      <h2>Order view</h2>
+      <p>{ location.pathname }</p>
+    </div>
+  );
+};
 
 Order.propTypes = {
-  id: PropTypes.string,
+  location: PropTypes.string,
 };
 
 export default Order;
