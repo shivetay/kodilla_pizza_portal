@@ -17,7 +17,7 @@ const Tables = (props) => {
   
 
 Tables.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
 };
 
 export default Tables;

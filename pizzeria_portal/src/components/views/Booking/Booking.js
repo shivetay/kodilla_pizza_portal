@@ -14,7 +14,7 @@ const Booking = (props) => {
 };
 
 Booking.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
 };
 
 export default Booking;

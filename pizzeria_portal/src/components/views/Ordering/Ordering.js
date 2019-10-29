@@ -16,7 +16,7 @@ const Ordering = (props) => {
 };
 
 Ordering.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
 };
 
 export default Ordering;
