@@ -5,7 +5,7 @@ import styles from './Order.scss';
 
 const Order = (props) => {
   
-  const {location} = props;
+  const { location } = props;
   return(
     <div className={styles.component}>
       <h2>Order view</h2>
