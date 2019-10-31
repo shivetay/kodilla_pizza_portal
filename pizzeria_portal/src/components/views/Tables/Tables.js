@@ -4,18 +4,19 @@ import {Link} from 'react-router-dom';
 
 import styles from './Tables.scss';
 
+import Button from '@material-ui/core/Button';
+
 const Tables = (props) => {
   const {location} = props;
   return(
     <div className={styles.component}>
       <h2>Tables viev</h2>
-      <Link to={`/tables/booking/${location.key}`}>Booking</Link>
-      <Link to={`/tables/event/${location.key}`}>Event</Link>
+      <Button component={Link} to={`/tables/booking/${location.key}`}>Booking</Button>
+      <Button component={Link} to={`/tables/event/${location.key}`}>event</Button>
     </div>
   );
 };
   
-
 Tables.propTypes = {
   location: PropTypes.object,
 };

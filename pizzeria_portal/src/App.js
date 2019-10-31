@@ -16,6 +16,7 @@ import Order from './components/views/Order/Order';
 import NewOrder from './components/views/NewOrder/NewOrder';
 import Booking from './components/views/Booking/Booking';
 import Event from './components/views/Event/Event';
+import Waiter from './components/views/Waiter/Waiter';
 
 const theme = createMuiTheme({
   palette: {
@@ -40,6 +41,7 @@ function App() {
               <Route path={`${process.env.PUBLIC_URL}/ordering/new`} component={NewOrder} />
               <Route path={`${process.env.PUBLIC_URL}/tables/booking/:id`} component={Booking} />
               <Route path={`${process.env.PUBLIC_URL}/tables/event/:id`} component={Event} />
+              <Route path={`${process.env.PUBLIC_URL}/waiter`} component={Waiter} />
             </Switch>
           </MainLayout>
         </ThemeProvider>

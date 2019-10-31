@@ -4,13 +4,15 @@ import {Link} from 'react-router-dom';
 
 import styles from './Ordering.scss';
 
+import Button from '@material-ui/core/Button';
+
 const Ordering = (props) => {
   const {location} = props;
   console.log(props);
   return(
     <div className={styles.component}>
-      <h2>Ordering viev</h2>
-      <Link to={`/ordering/order/${location.key}`}>Order</Link>
+      <h2>Ordering</h2>
+      <Button component={Link} to={`/ordering/order/${location.key}`}>Order</Button>
     </div>
   );
 };
