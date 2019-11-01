@@ -22,12 +22,12 @@ const demoOrders = [
   {id: '6', status: 'paid', order: 456},
 ];
 const demoBooking = [
-  {id: '1', status: 'pending',type: 'booking' , order: null},
-  {id: '2', status: 'paid',type: 'event' , order: null},
-  {id: '3', status: 'paid',type: 'booking' , order: 123},
-  {id: '4', status: 'paid',type: 'booking' , order: 234},
-  {id: '5', status: 'pending',type: 'event' , order: 345},
-  {id: '6', status: 'paid',type: 'event' , order: 456},
+  {id: '1', status: 'pending',type: 'booking' , order: 786531},
+  {id: '2', status: 'paid',type: 'event' , order: 52478},
+  {id: '3', status: 'paid',type: 'booking' , order: 78541},
+  {id: '4', status: 'paid',type: 'booking' , order: 45217},
+  {id: '5', status: 'pending',type: 'event' , order: 412785},
+  {id: '6', status: 'paid',type: 'event' , order: 124578},
 ];
 
 const Dashboard = () => (
