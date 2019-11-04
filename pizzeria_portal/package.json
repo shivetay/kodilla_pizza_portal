@@ -7,7 +7,7 @@
     "start": "run-p start:* ",
     "start-silent": "run-p start > /dev/null",
     "start:react": "react-scripts start",
-    "start:api": "yarn build && node server.js",
+    "start:api": "yarn build && json-server --watch ./build/db/app.json --port 3131",
     "start-and-test": "run-p start-silent test ",
     "build": "react-scripts build",
     "lint": "esw --watch --clear",
