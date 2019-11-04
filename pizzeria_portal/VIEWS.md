@@ -10,7 +10,7 @@
     - każda kolumna to 1 stolik
     - każdy wiersz to 30 minut
     - widok tygodnia w kalendarzu jak w google. Kolumna to różne stoliki
-    - klikniecie rezerwacji eveny - przenosi do szczegółów
+    - klikniecie rezerwacji eventy - przenosi do szczegółów
 - 'tables/booking/:id'
   * zawiera informacje dotyczące rezerwacji
   * umozliwia edycję i zapisanie zmian
