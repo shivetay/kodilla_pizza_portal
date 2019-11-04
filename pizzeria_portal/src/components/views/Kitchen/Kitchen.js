@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import styles from './Kitchen.scss';
@@ -24,53 +25,55 @@ const demoKitchen = [
   {id: '9', table: '7', checkbox: <Checkbox />, status: 'served', order: 234566},
 ];
 
-const Kitchen = () => (
-  <div className={styles.component}>
-    <h2>Kitchen</h2>
-    <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center" colSpan={5}>
-              Order List
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell>Id</TableCell>
-            <TableCell>Table</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Order Nnumber</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {demoKitchen.map(row => (
-            <TableRow key={row.id}>
-              <TableCell scope ="row" align="center">
-                {row.checkbox}
-              </TableCell>
-              <TableCell scope ="row" align="left">
-                {row.id}
-              </TableCell>
-              <TableCell scope ="row">
-                {row.table}
-              </TableCell>
-              <TableCell scope ="row" >
-                {row.status}
-              </TableCell>
-              <TableCell scope ="row" >
-                {row.order && (
-                  <Button to={`${process.env.PUBLIC_URL}/kitchen/order/${row.order}`}>
-                    {row.order}
-                  </Button>
-                )}
+const Kitchen = (props) => {
+  return (
+    <div className={styles.component}>
+      <h2>Kitchen</h2>
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={5}>
+                Order List
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-  </div>
-);
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell>Id</TableCell>
+              <TableCell>Table</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Order Nnumber</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {demoKitchen.map(row => (
+              <TableRow key={row.id}>
+                <TableCell scope ="row" align="center">
+                  {row.checkbox}
+                </TableCell>
+                <TableCell scope ="row" align="left">
+                  {row.id}
+                </TableCell>
+                <TableCell scope ="row">
+                  {row.table}
+                </TableCell>
+                <TableCell scope ="row" >
+                  {row.status}
+                </TableCell>
+                <TableCell scope ="row" >
+                  {row.order && (
+                    <Button component={Link} to={`/ordering/order/${row.order}`}>
+                      {row.order}
+                    </Button>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
+    </div>
+  );
+};
 
 export default Kitchen;

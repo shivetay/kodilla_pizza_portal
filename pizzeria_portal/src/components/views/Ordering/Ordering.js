@@ -13,6 +13,7 @@ const Ordering = (props) => {
     <div className={styles.component}>
       <h2>Ordering</h2>
       <Button component={Link} to={`/ordering/order/${location.key}`}>Order</Button>
+      <Button component={Link} to={`/ordering/neworder/${location.key}`}>New Order</Button>
     </div>
   );
 };
