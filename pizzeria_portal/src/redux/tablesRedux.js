@@ -4,7 +4,7 @@ import { api } from '../settings';
 /* selectors */
 export const getAll = ({tables}) => tables.data;
 export const getLoadingState = ({tables}) => tables.loading;
-export const getOrderStatus = ({tables}) => tables.status;
+export const postOrderStatus = ({tables}) => tables.status;
 
 /* action name creator */
 const reducerName = 'tables';
@@ -15,24 +15,17 @@ const createActionName = name => `app/${reducerName}/${name}`;
 const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
-const STATUS_FREE = createActionName('STATUS_FREE');
-const STATUS_THINKING = createActionName('STATUS_THINKING');
-const STATUS_ORDERED = createActionName('STATUS_ORDERED');
-const STATUS_PREPARED = createActionName('STATUS_PREPARED');
-const STATUS_PAID = createActionName('STATUS_PAID');
-const STATUS_DELIVERED = createActionName('STATUS_DELIVERED');
+const POST_STATUS = createActionName('POST_STATUS');
+const POST_SUCCESS = createActionName('POST_SUCCESS');
+const POST_ERROR = createActionName('POST_ERROR');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-
-export const fetchFree = payload => ({ payload, type: STATUS_FREE });
-export const fetchThinking = payload => ({ payload, type: STATUS_THINKING });
-export const fetchOrdered = payload => ({ payload, type: STATUS_ORDERED });
-export const fetchPrepared = payload => ({ payload, type: STATUS_PREPARED });
-export const fetchPaid = payload => ({ payload, type: STATUS_PAID });
-export const fetchDelivered = payload => ({ payload, type: STATUS_DELIVERED });
+export const postStatus = payload => ({ payload, type: POST_STATUS });
+export const postError = payload => ({ payload, type: POST_ERROR });
+export const postSuccess = payload => ({ payload, type: POST_SUCCESS });
 
 
 /* thunk creators */
@@ -51,17 +44,17 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const fetchFromTableStatus = () => {
+export const putToTableStatus = () => {
   return (dispatch) => {
-    dispatch(fetchStarted());
+    dispatch(postStatus());
 
     Axios
-      .get(`${api.url}/${api.tables.status}`)
+      .post(`${api.url}/${api.tables}/id_table`)
       .then(res => {
-        dispatch(fetchSuccess(res.data));
+        dispatch(postSuccess(res.data));
       })
       .catch(err => {
-        dispatch(fetchError(err.message || true));
+        dispatch(postError(err.message || true));
       });
   };
 };
@@ -88,60 +81,7 @@ export default function reducer(statePart = [], action = {}) {
         data: action.payload,
       };
     }
-    case STATUS_FREE: {
-      return {
-        ...statePart,
-        status: {
-          active: false,
-          error: action.payload,
-        },
-      };
-    }
-    case STATUS_THINKING: {
-      return {
-        ...statePart,
-        status:{
-          active: false,
-          error: action.payload,
-        },
-      };
-    }
-    case STATUS_ORDERED: {
-      return {
-        ...statePart,
-        status:{
-          active: false,
-          error: action.payload,
-        },
-      };
-    }
-    case STATUS_PREPARED: {
-      return {
-        ...statePart,
-        status:{
-          active: false,
-          error: action.payload,
-        },
-      };
-    }
-    case STATUS_PAID: {
-      return {
-        ...statePart,
-        status:{
-          active: false,
-          error: action.payload,
-        },
-      };
-    }
-    case STATUS_DELIVERED: {
-      return {
-        ...statePart,
-        status:{
-          active: false,
-          error: action.payload,
-        },
-      };
-    }
+    
     default:
       return statePart;
   }
