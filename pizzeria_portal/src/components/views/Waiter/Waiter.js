@@ -9,6 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+
+
 class Waiter extends React.Component {
   static propTypes = {
     fetchTables: PropTypes.func,
@@ -17,6 +19,7 @@ class Waiter extends React.Component {
       error: PropTypes.oneOf(PropTypes.bool,PropTypes.string),
     }),
     tables: PropTypes.any,
+    postTableStatus: PropTypes.func,
   }
 
   componentDidMount(){
@@ -29,7 +32,7 @@ class Waiter extends React.Component {
       case 'free':
         return (
           <>
-            <Button>thinking</Button>
+            <Button >thinking</Button>
             <Button>new order</Button>
           </>
         );

@@ -45,7 +45,8 @@ export const fetchFromAPI = () => {
 };
 
 export const putToTableStatus = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    console.log('klik');
     dispatch(postStatus());
 
     Axios
@@ -81,7 +82,12 @@ export default function reducer(statePart = [], action = {}) {
         data: action.payload,
       };
     }
-    
+    case POST_SUCCESS : {
+      return {
+        data: action.payload,
+      };
+    }
+
     default:
       return statePart;
   }
