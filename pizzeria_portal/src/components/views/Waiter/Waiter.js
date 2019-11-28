@@ -20,6 +20,7 @@ class Waiter extends React.Component {
     }),
     tables: PropTypes.any,
     postTableStatus: PropTypes.func,
+
   }
 
   componentDidMount(){
@@ -27,12 +28,22 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  renderActions(status){
+  onClick(e, id) {
+    e.preventDefault();
+
+    const tables = {
+      id,
+      status: 'thinking',
+    };
+    this.props.postTableStatus(tables);
+  }
+
+  renderActions(status, id){
     switch (status) {
       case 'free':
         return (
           <>
-            <Button >thinking</Button>
+            <Button onClick={(e) => this.onClick(e, id)}>thinking</Button>
             <Button>new order</Button>
           </>
         );
@@ -106,7 +117,7 @@ class Waiter extends React.Component {
                     )}
                   </TableCell>
                   <TableCell>
-                    {this.renderActions(row.status)}
+                    {this.renderActions(row.status, row.id)}
                   </TableCell>
                 </TableRow>
               ))}

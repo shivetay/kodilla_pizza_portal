@@ -1,0 +1,7 @@
+{
+  "prettier.jsxSingleQuote": true,
+  "prettier.jsxBracketSameLine": true,
+  "editor.wordWrap": "on",
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5"
+}
