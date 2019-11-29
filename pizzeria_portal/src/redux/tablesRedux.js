@@ -75,10 +75,6 @@ export default function reducer(statePart = [], action = {}) {
       };
     }
     case POST_STATUS: {
-      // return {
-      //   ...statePart,
-      //   data: action.payload,
-      // };
       return Object.assign({}, statePart, {
         data: statePart.data.map(item => {
           return item.id === action.payload.id ? action.payload : item;
