@@ -57,7 +57,7 @@ class Waiter extends React.Component {
         );
       case 'prepared':
         return (
-          <Button>delivered</Button>
+          <Button onClick={(e) => this.onClick(e, id)}>delivered</Button>
         );
       case 'delivered':
         return (
