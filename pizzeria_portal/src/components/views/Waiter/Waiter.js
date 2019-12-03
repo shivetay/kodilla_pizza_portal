@@ -51,9 +51,10 @@ class Waiter extends React.Component {
     }
 
     this.props.postTableStatus(tableId, status, order);
+
   }
 
-  renderActions(status, id, order, fetch){
+  renderActions(status, id, order){
     switch (status) {
       case 'free':
         return (
@@ -89,7 +90,7 @@ class Waiter extends React.Component {
 
   render() {
     const { loading: { active, error }, tables } = this.props;
-
+    console.log('props',this.props);
     if(active || !tables.length){
       return (
         <Paper className={styles.component}>

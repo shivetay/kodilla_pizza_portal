@@ -42,7 +42,6 @@ export const fetchFromAPI = () => {
 export const putToTableStatus = (tableId, newStatus, newOrder) => {
   return (dispatch, getState) => {
     Axios.patch(`${api.url}/${api.tables}/${tableId}`, {status: newStatus, order: newOrder})
-
       .then(res => {
         console.count('table spread',tableId);
         console.count(' status',newStatus);
@@ -51,7 +50,6 @@ export const putToTableStatus = (tableId, newStatus, newOrder) => {
         console.log('data', res.data);
         console.log('postStatus1',postStatus(res.data));
       });
-
   };
 };
 
