@@ -15,16 +15,14 @@ const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 const POST_STATUS = createActionName('POST_STATUS');
-// const POST_SUCCESS = createActionName('POST_SUCCESS');
-// const POST_ERROR = createActionName('POST_ERROR');
+
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const postStatus = payload => ({ payload, type: POST_STATUS });
-// export const postError = payload => ({ payload, type: POST_ERROR });
-// export const postSuccess = payload => ({ payload, type: POST_SUCCESS });
+
 
 /* thunk creators */
 export const fetchFromAPI = () => {
@@ -40,13 +38,18 @@ export const fetchFromAPI = () => {
       });
   };
 };
-
-export const putToTableStatus = (tables) => {
+// tableId, newStatus, newOrder
+export const putToTableStatus = (tableId, newStatus, newOrder) => {
   return (dispatch, getState) => {
+    Axios.patch(`${api.url}/${api.tables}/${tableId}`, {status: newStatus, order: newOrder})
 
-    Axios.post(`${api.url}/${api.tables}`, {tables})
       .then(res => {
+        console.count('table spread',tableId);
+        console.count(' status',newStatus);
+        console.count(' order',newOrder);
         dispatch(postStatus(res.data));
+        console.log('data', res.data);
+        console.log('postStatus1',postStatus(res.data));
       });
 
   };
@@ -75,11 +78,10 @@ export default function reducer(statePart = [], action = {}) {
       };
     }
     case POST_STATUS: {
-      return Object.assign({}, statePart, {
-        data: statePart.data.map(item => {
-          return item.id === action.payload.id ? action.payload : item;
-        }),
-      });
+      return{
+        ...statePart,
+        data: action.payload,
+      };
     }
 
     default:

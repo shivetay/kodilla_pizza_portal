@@ -28,45 +28,59 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  onClick(e, id, order) {
+  onClick(e, tableId, status, order) {
     e.preventDefault();
 
-    const tables = {
-      id,
-      status: 'thinking',
-      order,
-    };
-    this.props.postTableStatus(tables);
+    if(status === 'free'){
+      status = 'thinking';
+    }
+    else if(status === 'thinking'){
+      status = 'ordered';
+    }
+    else if(status === 'ordered'){
+      status = 'prepared';
+    }
+    else if(status === 'prepared'){
+      status = 'delivered';
+    }
+    else if(status === 'delivered'){
+      status = 'paid';
+    }
+    else if(status === 'paid'){
+      status = 'free';
+    }
+
+    this.props.postTableStatus(tableId, status, order);
   }
 
-  renderActions(status, id, order){
+  renderActions(status, id, order, fetch){
     switch (status) {
       case 'free':
         return (
           <>
-            <Button onClick={(e) => this.onClick(e, id, order)}>thinking</Button>
-            <Button>new order</Button>
+            <Button onClick={(e) => this.onClick(e, id, status, order)}>thinking</Button>
+            <Button onClick={(e) => this.onClick(e, id, status, order)}>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button>new order</Button>
+          <Button onClick={(e) => this.onClick(e, id, status, order)}>new order</Button>
         );
       case 'ordered':
         return (
-          <Button>prepared</Button>
+          <Button onClick={(e) => this.onClick(e, id, status, order )}>prepared</Button>
         );
       case 'prepared':
         return (
-          <Button onClick={(e) => this.onClick(e, id, order)}>delivered</Button>
+          <Button onClick={(e) => this.onClick(e, id, status, order)}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button>paid</Button>
+          <Button onClick={(e) => this.onClick(e, id, status, order)}>paid</Button>
         );
       case 'paid':
         return (
-          <Button>free</Button>
+          <Button onClick={(e) => this.onClick(e, id, status, order)}>free</Button>
         );
       default:
         return null;

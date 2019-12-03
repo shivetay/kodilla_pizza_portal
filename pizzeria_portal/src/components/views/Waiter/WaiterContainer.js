@@ -16,8 +16,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchTables: () => dispatch(fetchFromAPI()),
-  postTableStatus: tables => dispatch(putToTableStatus(tables)),
+  postTableStatus: (table, status, order) => dispatch(putToTableStatus(table, status, order)),
 });
+
 
 export default connect(
   mapStateToProps,
