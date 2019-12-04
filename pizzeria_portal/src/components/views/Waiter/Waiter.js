@@ -20,7 +20,6 @@ class Waiter extends React.Component {
     }),
     tables: PropTypes.any,
     postTableStatus: PropTypes.func,
-
   }
 
   componentDidMount(){
@@ -90,7 +89,6 @@ class Waiter extends React.Component {
 
   render() {
     const { loading: { active, error }, tables } = this.props;
-    console.log('props',this.props);
     if(active || !tables.length){
       return (
         <Paper className={styles.component}>

@@ -11,7 +11,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import Login from './components/views/Login/Login';
 import Tables from './components/views/Tables/Tables';
-import Dashboard from './components/views/Dashboard/Dashboard';
+import Dashboard from './components/views/Dashboard/DashboardContainer';
 import Kitchen from './components/views/Kitchen/Kitchen';
 import Ordering from './components/views/Ordering/Ordering';
 import Order from './components/views/Order/Order';
@@ -23,7 +23,7 @@ import Waiter from './components/views/Waiter/WaiterContainer';
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#2b4c6f' },
-    // secondary: { main: '#11cb5f' }, 
+    // secondary: { main: '#11cb5f' },
   },
 });
 

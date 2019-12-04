@@ -126,7 +126,7 @@ input.error, select.error { border-color: #ff6b6b; }
 
 .cart__product-details-label { position: relative; padding: 0 6px 0 0; font-weight: 700; }
 
-.cart__product-details-label::after { position: absolute; content: ':'; }
+.cart__product-details-label::after { position: absolute; content: ":"; }
 
 .cart__action-buttons { display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; -ms-flex-align: center; align-items: center; -ms-flex-pack: justify; justify-content: space-between; font-size: 0; }
 

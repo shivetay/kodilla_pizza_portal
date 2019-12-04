@@ -38,17 +38,12 @@ export const fetchFromAPI = () => {
       });
   };
 };
-// tableId, newStatus, newOrder
+
 export const putToTableStatus = (tableId, newStatus, newOrder) => {
   return (dispatch, getState) => {
     Axios.patch(`${api.url}/${api.tables}/${tableId}`, {status: newStatus, order: newOrder})
       .then(res => {
-        console.count('table spread',tableId);
-        console.count(' status',newStatus);
-        console.count(' order',newOrder);
         dispatch(postStatus(res.data));
-        console.log('data', res.data);
-        console.log('postStatus1',postStatus(res.data));
       });
   };
 };
@@ -84,6 +79,15 @@ export default function reducer(statePart = [], action = {}) {
           action.payload,
         ],
       };
+      // const editedIndex = statePart.data.findIndex((table) => table.id === action.payload.id);
+      // return {
+      //   ...statePart,
+      //   data: [
+      //     ...statePart.data.slice(0, editedIndex - 1),
+      //     action.payload,
+      //     ...statePart.data.slice(editedIndex),
+      //   ],
+      // };
     }
 
     default:
