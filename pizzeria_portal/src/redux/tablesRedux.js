@@ -78,7 +78,11 @@ export default function reducer(statePart = [], action = {}) {
     case POST_STATUS: {
       return{
         ...statePart,
-        data: action.payload,
+        data: [
+          //return olda state
+          ...statePart.data.filter((table) => table.id !== action.payload.id),
+          action.payload,
+        ],
       };
     }
 
